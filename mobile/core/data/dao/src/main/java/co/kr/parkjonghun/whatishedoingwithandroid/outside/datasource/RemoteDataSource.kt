@@ -1,29 +1,41 @@
 package co.kr.parkjonghun.whatishedoingwithandroid.outside.datasource
 
 import co.kr.parkjonghun.whatishedoingwithandroid.outside.dao.SupabaseDao
+import co.kr.parkjonghun.whatishedoingwithandroid.outside.dao.firebase.FirebaseDao
 import io.github.jan.supabase.gotrue.user.UserInfo
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import timber.log.Timber
 
 interface RemoteDataSource {
     val currentUser: Flow<UserInfo?>
-    suspend fun login(): Unit?
+    suspend fun login()
     suspend fun logout()
 }
 
 internal class RemoteDataSourceImpl(
     private val supabaseDao: SupabaseDao,
+    private val firebaseDao: FirebaseDao,
 ) : RemoteDataSource {
     override val currentUser: Flow<UserInfo?> = flow {
         while (true) {
             val currentUser = supabaseDao.getUser()
+            currentUser?.let { firebaseDao.setUserId(it.id) }
             emit(currentUser)
             delay(GET_USER_DELAY_MILLIS)
         }
     }
 
-    override suspend fun login(): Unit? = supabaseDao.signInWithGithub()
+    override suspend fun login() {
+        runCatching {
+            supabaseDao.signInWithGithub()
+        }.onSuccess {
+            firebaseDao.logLogin()
+        }.onFailure {
+            Timber.e(it.stackTraceToString())
+        }
+    }
 
     override suspend fun logout() = supabaseDao.signOut()
 }

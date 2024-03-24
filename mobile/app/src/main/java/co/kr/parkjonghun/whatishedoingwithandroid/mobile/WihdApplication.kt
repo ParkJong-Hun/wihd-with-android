@@ -1,6 +1,7 @@
 package co.kr.parkjonghun.whatishedoingwithandroid.mobile
 
 import android.app.Application
+import co.kr.parkjonghun.whatishedoingwithandroid.inside.di.providerModule
 import co.kr.parkjonghun.whatishedoingwithandroid.inside.di.repositoryModule
 import co.kr.parkjonghun.whatishedoingwithandroid.mobile.di.dispatchersModule
 import co.kr.parkjonghun.whatishedoingwithandroid.outside.di.dataModule
@@ -20,6 +21,7 @@ class WihdApplication : Application() {
                 dispatchersModule,
                 dataModule,
                 repositoryModule,
+                providerModule,
                 useCaseModule,
             )
         }

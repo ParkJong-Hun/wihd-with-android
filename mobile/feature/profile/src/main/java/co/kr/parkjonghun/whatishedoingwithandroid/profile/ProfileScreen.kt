@@ -2,6 +2,7 @@ package co.kr.parkjonghun.whatishedoingwithandroid.profile
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -9,6 +10,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import co.kr.parkjonghun.whatishedoingwithandroid.component.atom.primitive.WihdText
 import co.kr.parkjonghun.whatishedoingwithandroid.component.atom.primitive.WihdTextStyle
+import co.kr.parkjonghun.whatishedoingwithandroid.service.usecase.analytics.screen.TrackScreen
+import org.koin.compose.koinInject
 
 const val profileScreenRoute = "profile"
 
@@ -41,6 +44,11 @@ fun ProfileScreen(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(),
 ) {
+    val trackScreen = koinInject<TrackScreen>()
+    SideEffect {
+        trackScreen("ProfileScreen")
+    }
+
     ProfileBody()
 }
 

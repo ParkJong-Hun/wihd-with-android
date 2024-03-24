@@ -17,6 +17,7 @@ fun Project.setupDetekt(extension: DetektExtension) {
         autoCorrect = false
     }
 
+    @Suppress("UNCHECKED_CAST")
     val reportMerge = if (!rootProject.tasks.names.contains("reportMerge")) {
         rootProject.tasks.register("reportMerge", ReportMergeTask::class) {
             output.set(rootProject.layout.buildDirectory.file("reports/detekt/merge.xml"))

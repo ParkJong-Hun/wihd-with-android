@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.wihd.test)
     alias(libs.plugins.wihd.detekt)
     alias(libs.plugins.wihd.serialization)
+    alias(libs.plugins.wihd.firebase)
 }
 
 android.namespace = "co.kr.parkjonghun.whatishedoingwithandroid.data.dao"

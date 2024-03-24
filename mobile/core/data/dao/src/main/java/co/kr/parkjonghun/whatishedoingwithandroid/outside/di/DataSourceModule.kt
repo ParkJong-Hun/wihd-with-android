@@ -17,6 +17,7 @@ internal val dataSourceModule = module {
 
     single<RemoteDataSource> {
         RemoteDataSourceImpl(
+            firebaseDao = get(),
             supabaseDao = get(),
         )
     }

@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kspPlugin) apply false
     alias(libs.plugins.dependencyGuardPlugin) apply false
     alias(libs.plugins.roborazziPlugin) apply false
+    alias(libs.plugins.crashlyticsPlugin) apply false
 }
 
 tasks.register("clean", Delete::class) {
@@ -15,8 +16,8 @@ tasks.register("clean", Delete::class) {
 buildscript {
     configurations.all {
         resolutionStrategy.eachDependency {
-            when {
-                requested.name == "javapoet" -> useVersion("1.13.0")
+            when (requested.name) {
+                "javapoet" -> useVersion("1.13.0")
             }
         }
     }

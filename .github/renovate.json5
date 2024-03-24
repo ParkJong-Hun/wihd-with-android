@@ -6,7 +6,7 @@
     "github>whitesource/merge-confidence:beta",
   ],
   "baseBranches": [
-    "develop/202402"
+    "develop/202403"
   ],
   "rebaseWhen": "never",
   "timezone": "Asia/Tokyo",

@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -335,7 +334,7 @@ private fun LazyListScope.catalogHeadline(
                     label = { WihdText(text = "Template", style = WihdTextStyle.L2) },
                 )
             }
-            Divider(thickness = 3.dp)
+            ThickDivider()
         }
     }
 }
@@ -359,7 +358,7 @@ private fun LazyListScope.catalogItem(
                 color = MaterialTheme.colorScheme.secondary,
             )
             content()
-            Divider()
+            ThickDivider()
         }
     }
 }

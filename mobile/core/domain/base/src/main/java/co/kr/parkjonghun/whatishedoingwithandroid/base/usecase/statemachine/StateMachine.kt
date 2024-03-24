@@ -119,6 +119,7 @@ interface StateMachine<STATE : State, ACTION : Action> : UseCase {
             relationMap[stateMatcher] = RelationBuilder<TARGET_STATE>().apply(config).build()
         }
 
+        @Suppress("DEPRECATION")
         public inline fun <reified TARGET_STATE : SEALED_STATE> fromState(
             noinline config: RelationBuilder<TARGET_STATE>.() -> Unit,
         ) = fromState(Matcher.any(), config)
@@ -143,6 +144,7 @@ interface StateMachine<STATE : State, ACTION : Action> : UseCase {
                 }
             }
 
+            @Suppress("DEPRECATION")
             public inline fun <reified TARGET_ACTION : SEALED_ACTION> on(
                 noinline transition: TARGET_STATE.(TARGET_ACTION) -> Diagram.FromState.TransitionTo<SEALED_STATE>,
             ) {

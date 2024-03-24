@@ -2,11 +2,11 @@ package co.kr.parkjonghun.whatishedoingwithandroid.feature.top.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.List
+import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.outlined.AddCircle
-import androidx.compose.material.icons.outlined.List
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.rounded.AddCircle
-import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -22,8 +22,8 @@ enum class TopDestination(
     @StringRes val labelTextRes: Int,
 ) {
     NEWS(
-        icon = Icons.Outlined.List,
-        selectedIcon = Icons.Rounded.List,
+        icon = Icons.AutoMirrored.Outlined.List,
+        selectedIcon = Icons.AutoMirrored.Rounded.List,
         iconTextRes = NewsString.news_description,
         labelTextRes = NewsString.news_label,
     ),
